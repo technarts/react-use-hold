@@ -1,13 +1,13 @@
 import React from "react";
 
-type Args = {
+type Params = {
   onClick?: React.MouseEventHandler,
   onHold?: (event: React.MouseEvent<Element>, target: EventTarget) => void,
   onRelease?: () => void,
   ms: number,
 }
 
-const useHold = (props: Args) => {
+export default function (params: Params) {
   // Event chain is as follows:
   // 1. onTouchStart
   // 2. onTouchEnd
@@ -33,8 +33,8 @@ const useHold = (props: Args) => {
       if (lastCall.current !== "onTouchStart")
         handled.current = true;
       if (eventRef.current && eventTargetRef.current)
-        props.onHold?.(eventRef.current, eventTargetRef.current);
-    }, props.ms);
+        params.onHold?.(eventRef.current, eventTargetRef.current);
+    }, params.ms);
   }
 
   function surrender() {
@@ -47,7 +47,7 @@ const useHold = (props: Args) => {
       handled.current = false;
       event.preventDefault();
     } else {
-      props.onClick?.(event);
+      params.onClick?.(event);
     }
   }
 
@@ -59,7 +59,7 @@ const useHold = (props: Args) => {
   function onMouseUp() {
     lastCall.current = "onMouseUp";
     surrender();
-    props.onRelease?.();
+    params.onRelease?.();
   }
 
   function onTouchStart(event: any) {
@@ -80,7 +80,3 @@ const useHold = (props: Args) => {
     onTouchEnd,
   }
 }
-
-export default useHold;
-
-
