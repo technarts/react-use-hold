@@ -1,10 +1,9 @@
-// Inspired from: https://spacejelly.dev/posts/how-to-detect-long-press-gestures-in-javascript-events-in-react
-
-import * as React from "react";
+import React from "react";
 
 type Args = {
-  onClick: React.MouseEventHandler,
-  onHold: (event: React.MouseEvent<Element>, target: EventTarget) => void,
+  onClick?: React.MouseEventHandler,
+  onHold?: (event: React.MouseEvent<Element>, target: EventTarget) => void,
+  onRelease?: () => void,
   ms: number,
 }
 
@@ -34,7 +33,7 @@ const useHold = (props: Args) => {
       if (lastCall.current !== "onTouchStart")
         handled.current = true;
       if (eventRef.current && eventTargetRef.current)
-        props.onHold(eventRef.current, eventTargetRef.current);
+        props.onHold?.(eventRef.current, eventTargetRef.current);
     }, props.ms);
   }
 
@@ -48,7 +47,7 @@ const useHold = (props: Args) => {
       handled.current = false;
       event.preventDefault();
     } else {
-      props.onClick(event);
+      props.onClick?.(event);
     }
   }
 
@@ -60,6 +59,7 @@ const useHold = (props: Args) => {
   function onMouseUp() {
     lastCall.current = "onMouseUp";
     surrender();
+    props.onRelease?.();
   }
 
   function onTouchStart(event: any) {
