@@ -1,5 +1,5 @@
 {
-  "name": "@technarts/useHold",
+  "name": "@technarts/use-hold",
   "version": "1.0.0",
   "description": "useHold hook by technarts",
   "main": "./dist/cjs/index.js",
@@ -9,7 +9,7 @@
     "prepare": "npm run build",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
   "keywords": [],
   "author": "technarts",
@@ -27,5 +27,5 @@
   ],
   "publishConfig": {
       "access": "public"
-  },
+  }
 }
