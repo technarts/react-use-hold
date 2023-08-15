@@ -1,5 +1,5 @@
 {
-  "name": "@technarts/use-hold",
+  "name": "@technarts/react-use-hold",
   "version": "1.0.0",
   "description": "useHold hook by technarts",
   "main": "./dist/cjs/index.js",
