@@ -1,3 +1,3 @@
-import useHold from './components/useHold'
+import useHold from './useHold'
 
 export { useHold }
