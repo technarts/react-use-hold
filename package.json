@@ -1,10 +1,10 @@
 {
   "name": "@technarts/react-use-hold",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React hook for handling clicking and holding it.",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/cjs/pkg/index.js",
+  "module": "./dist/esm/pkg/index.js",
+  "types": "./dist/esm/pkg/index.d.ts",
   "scripts": {
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
